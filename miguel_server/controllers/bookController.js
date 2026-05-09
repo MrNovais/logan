@@ -37,4 +37,32 @@ const someBook =  async (req, res) => {
  }
 };
 
-module.exports = { createBook, listBook, someBook };
+const updateBook =  async (req, res) => {
+ try {   const { id } = req.params;
+   const updates = req.body;
+   const options = { new: true, runValidators: true };
+
+
+   const updateBook = await Book.findByIdAndUpdate(id, updates, options);
+   if (!updateBook)
+     return res.status(404).json({ error: "Livro não encontrado" });
+
+
+   res.json(updateBook);
+ } catch (err) {
+   res.status(500).json({ error: "Erro ao atualizar livro." });
+ }
+};
+
+const deleteBook =  async (req, res) => {
+  try { const { id } = req.params;
+     const deletedBook = await Book.findByIdAndDelete(id);
+     if (!deletedBook)
+       return res.status(404).json({ error: "Livro não encontrado" });
+     res.json({ message: "Livro excluído com sucesso" });
+   } catch (err) {
+     res.status(500).json({ error: "Erro ao excluir livro" });
+   }
+  });
+
+module.exports = { createBook, listBook, someBook, updateBook, deleteBook };

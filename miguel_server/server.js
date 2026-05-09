@@ -57,7 +57,7 @@ app.listen(3000, () => console.log("Server running on port 3000"));
  }
 });*/
 
-app.post("/api/loans", async (req, res) => {
+/*app.post("/api/loans", async (req, res) => {
 try {
   const { userName, bookTitle, returnDate } = req.body;
   const newLoan = new Loan({ userName, bookTitle, returnDate });
@@ -66,9 +66,8 @@ try {
 } catch (err) {
   res.status(500).json({ error: "Erro ao registrar empréstimo" });
 }
-});
-
-app.patch("/api/books/:id", async (req, res) => {
+});*/
+/*app.patch("/api/books/:id", async (req, res) => {
  try {
    const { id } = req.params;
    const updates = req.body;
@@ -84,7 +83,7 @@ app.patch("/api/books/:id", async (req, res) => {
  } catch (err) {
    res.status(500).json({ error: "Erro ao atualizar livro." });
  }
-});
+});*/
 
 app.delete("/api/books/:id", async (req, res) => {
  try {
